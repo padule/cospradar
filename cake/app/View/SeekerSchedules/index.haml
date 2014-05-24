@@ -1,0 +1,130 @@
+!!!
+%html
+  %head
+    %title Padule
+
+    %link{:href => "../../img/favicon.ico", :rel => "shortcut icon"}
+    %link{:href => "../../css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "../../css/datepicker.css", :rel => "stylesheet"}
+    %link{:href => "../../css/padule.css", :rel => "stylesheet"}
+    %link{:href => "../../css/schedule.css", :rel => "stylesheet"}
+
+    %meta{:name => "keywords", :content => "スケジュール,調整"}
+    %meta{:name => "description", :content => "日程調整をパズル感覚で行おう"}
+    %meta{:property => "og:title", :content => "Padule"}
+    %meta{:property => "og_image", :content => ""}
+    %meta{:property => "og:description", :content => ""}
+    %meta{:property => "og:type", :content => "website"}
+    %meta{:property => "og:url", :content => "http://padule.me"}
+    %meta{:property => "og:site_name", :content => "Padule"}
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no"}
+
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top.padule-nav
+      .container-fluid
+        %a.navbar-brand{:href => '../'}
+          Padule
+
+    :plain
+      <div class='seeker-schedule-container container-fluid' data-eventid='<?php echo $eventId;?>'>
+
+    .event-container
+      %h4.event-title
+      %p.event-text
+
+    .seeker-container
+      .form-group
+        %label{:for=>"inputName"}
+          氏名
+        %label.important
+          (必須)
+        %input#inputName.necessary.input-sm.form-control{:type=>"text", :placeholder=>"氏名"}
+      .form-group.input-email
+        %label{:for=>"inputEmail"}
+          メールアドレス
+        %label.important
+          (必須)
+        %input#inputEmail.necessary.input-sm.form-control{:type=>"email", :placeholder=>"メールアドレス"}
+      .form-group.input-email2
+        %label{:for=>"inputEmail"}
+          メールアドレス（確認）
+        %label.important
+          (必須)
+        %input#inputEmail2.necessary.input-sm.form-control{:type=>"email", :placeholder=>"メールアドレス"}
+
+    .edit-container
+      %p
+        ■ 参加可能な日時を選択してください。
+      #seeker-schedule-edit
+        %ul.list-group
+
+    .seeker-container
+      .form-group
+        %label
+          コメント
+        %textarea#inputComment.form-control{:rows=>"3", :placeholder=>"日程に関して、何か伝えたいことがあれば記述してください。"}
+
+    .control-container
+      %p.attention.important
+        ※ 一度送信した内容は修正できません。
+      %button#sendSeekerSchedule.disabled.btn.btn-success.btn-lg
+        内容を送信する
+
+    :plain
+      </div>
+
+    #alertModal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{:type=>'button', :aria=>{:hidden=>'modal-body'}, :data=>{:dismiss => 'modal'}}
+              &times;
+            %i.glyphicon.glyphicon-question-sign
+            %span.modal-title
+          .modal-body
+          .modal-footer
+            %button#alertOK.btn.btn-success{:type => 'button'}
+              はい
+            %button.btn.btn-default{:type => 'button', :data => {:dismiss => 'modal'}}
+              いいえ
+
+    :javascript
+      if (window.padule == null) window.padule = { Models: {}, Collections: {}, Views: {},Routers: {} };
+    %script{:src=>"../../js/libs/jquery-2.0.3.min.js"}
+    %script{:src=>"../../js/libs/bootstrap.min.js"}
+    %script{:src=>"../../js/libs/json2.js"}
+    %script{:src=>"../../js/libs/dateformat.js"}
+    %script{:src=>"../../js/libs/underscore.js"}
+    %script{:src=>"../../js/libs/backbone.js"}
+    %script{:src=>"../../js/libs/backbone.localStorage.js"}
+    %script{:src=>"../../js/application.js"}
+    %script{:src=>"../../js/padule.js"}
+    %script{:src=>"../../js/libs/jquery.mockjax.js"}
+    / template
+    %script{:src=>"../../js/templates/templates.js"}
+    / model
+    %script{:src=>"../../js/models/event.js"}
+    %script{:src=>"../../js/models/schedule.js"}
+    %script{:src=>"../../js/models/seeker.js"}
+    %script{:src=>"../../js/models/seeker_schedule.js"}
+    %script{:src=>"../../js/models/user.js"}
+    / collection
+    %script{:src=>"../../js/collections/events.js"}
+    %script{:src=>"../../js/collections/schedules.js"}
+    %script{:src=>"../../js/collections/seeker_schedules.js"}
+    / view
+    %script{:src=>"../../js/views/schedule/alert_modal.js"}
+    %script{:src=>"../../js/views/seeker_schedule/schedule_list.js"}
+    %script{:src=>"../../js/views/seeker_schedule/schedule_list_element.js"}
+    %script{:src=>"../../js/views/seeker_schedule/seeker_schedule_input.js"}
+    %script{:src=>"../../js/routers/schedules_router.js"}
+
+    %script
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45987329-1', 'padule.me');
+      ga('send', 'pageview');

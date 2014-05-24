@@ -1,0 +1,339 @@
+@import "padule";
+
+.seeker-schedule-container {
+  margin-left: $margin1;
+  margin-right: $margin1;
+  padding: $margin1;
+  background-color: $gray1;
+  height: 100%;
+  min-height: 100%;
+
+  .event-container {
+    @include line-bottom;
+    margin-bottom: $margin2;
+  }
+  .event-title {
+    font-weight: bold;
+  }
+  .event-text {
+    font-size: $font-size1;
+  }
+  .seeker-container {
+    margin-bottom: $margin2 * 2;
+  }
+  #seeker-schedule-edit {
+    .schedule-time {
+      height: 30px;
+      display: block;
+      padding-top: 8px;
+    }
+    .seeker-schedule-btn {
+      float: right;
+    }
+  }
+  .edit-container > p {
+    font-weight: bold;
+  }
+  .important {
+    color: $red1;
+  }
+  .control-container {
+    margin: -$margin1;
+    padding: $margin1;
+    @include line-top;
+    @include gradient-top-lighten($gray2);
+  }
+}
+body > .seeker-schedule-container {
+  height: auto;
+  min-height: auto;
+}
+
+.feedback-container{
+  margin-top: 5px;
+}
+
+.schedule-container{
+  padding-left: $margin1;
+  padding-right: $margin1;
+  height: 100%;
+  .row-fluid {
+    height: 100%;
+  }
+}
+
+#eventSidebar {
+  position: fixed;
+  top: $nav-height;
+  bottom: 0;
+  left: $margin1;
+  overflow: hidden;
+  width: $sidebar-width;
+  background-color: $gray2;
+  @include line-right;
+
+  .sidebar-container {
+    overflow: auto;
+  }
+
+  .add-container {
+    padding: 10px;
+    @include gradient-top-lighten($gray4);
+    @include line-bottom;
+    button {
+      width: 100%;
+    }
+  }
+
+  #eventList {
+    $event-list-margin: 10px;
+
+    .event {
+      position: relative;
+      @include line-bottom;
+      @include transition-duration(0.1s);
+
+      .delete-button {
+        position: absolute;
+        top: $event-list-margin;
+        right: $event-list-margin;
+        font-size: 18px;
+        display: none;
+      }
+
+      .edit-container {
+        padding: 6px;
+        display: none;
+        .edit {
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          padding-left: 4px;
+        }
+        input[type="text"]:focus {
+          outline: 0;
+          border-color: $orange1 * 1.1 !important;
+        }
+      }
+
+      &.active {
+        @include gradient-top-lighten($gray1);
+        font-weight: bold;
+        border-left: 6px solid $orange1;
+        cursor: default;
+        > a {
+          @include gradient-top-lighten($gray1);
+        }
+      }
+
+      &:hover {
+        background-color: $gray4;
+        .delete-button {
+          display: block;
+        }
+      }
+
+      &.editing {
+        .delete-button {
+          display: none !important;
+        }
+        .edit-container {
+          display: block;
+        }
+        > a {
+          display: none;
+        }
+      }
+    }
+
+    a {
+      @include transition-duration(0.1s);
+      display: block;
+      width: 170px;
+      padding: 10px;
+      color: $navy1;
+      @include ts-fff;
+      &:hover {
+        background-color: $gray4;
+      }
+    }
+  }
+}
+
+body > #scheduleContents {
+  height: auto;
+}
+
+#scheduleContents {
+  overflow: hidden;
+  position: relative;
+  margin-left: $sidebar-width;
+  height: 100%;
+  min-height: 100%;
+  background-color: $gray2;
+
+  .schedule-table-container {
+    overflow: scroll;
+    height: 100px;
+    width: auto;
+    margin: $margin1;
+    font-size: $font-size1;
+    .no-event {
+      padding: $margin1;
+      font-size: $font-size2;
+    }
+    .schedule-table {
+      background-color: $white1;
+      width: auto;
+      border: 1px solid #ddd;
+      @include box-emboss;
+      margin-bottom: 0;
+      tfoot>tr>td {
+        max-width: 140px;
+        text-align: left;
+      }
+      .new-schedule {
+        background-color: $orange2;
+      }
+    }
+  }
+
+  .add-button-container {
+    margin: $margin1;
+  }
+
+  th, td {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  thead th {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .seeker_info {
+    color: $navy1;
+  }
+
+  tbody th {
+    max-width: 170px;
+    width: 170px;
+    .schedule-delete-button {
+      width: 20px;
+      font-size: 18px;
+    }
+    .schedule-time {
+      width: 120px;
+      max-width: 120px;
+    }
+  }
+
+  tr:hover {
+    .schedule-delete-button {
+      display: block;
+    }
+  }
+
+  .schedule-btn {
+    @include transition-duration(0.25s);
+    min-width: 50px;
+    &.disabled {
+      @include opacity(.2);
+    }
+  }
+
+  .button-container {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: $margin1;
+    @include line-top;
+    @include gradient-top-lighten($gray2);
+    text-align: center;
+  }
+
+}
+
+.control-container {
+  padding: $margin1;
+  // @include line-bottom;
+  border: 1px solid $gray4;
+  button, a {
+    width: 100%;
+  }
+  .event-contents {
+    border-bottom: 1px solid $gray1;
+
+    button {
+      width: auto;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-weight: bold;
+    }
+    >.row {
+      margin-bottom: $margin1;
+    }
+  }
+
+  .event-text {
+    background-color: $gray4;
+    border-radius: 6px;
+    .event-text-form {
+      margin-bottom: $margin1;
+      &:focus {
+        outline: 0;
+        border-color: $orange1 * 1.1 !important;
+      }
+    }
+    .text-view {
+      p {
+        font-size: $font-size1;
+      }
+      #eventText{
+        margin-bottom: $margin1;
+      }
+    }
+    .text-edit {
+      display: none;
+    }
+    &.editing {
+      .text-edit {
+        display: block;
+      }
+      .text-view {
+        display: none;
+      }
+    }
+  }
+
+  .schedule-add > div {
+    margin-right: 6px;
+  }
+
+  #scheduleDatepicker {
+    width: 120px;
+  }
+  #scheduleTimepicker {
+    width: 90px;
+  }
+  #addScheduleButton {
+    width: auto;
+  }
+}
+
+.loading {
+  background-image: url('../images/loading.gif') !important;
+  background-repeat: no-repeat !important;
+  background-position: center 50px;
+  background-size: 100px;
+  height: 100%;
+}
+
+#alertModal {
+  .modal-header {
+    font-size: $font-size3;
+  }
+}

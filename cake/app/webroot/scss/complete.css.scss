@@ -1,0 +1,38 @@
+@import "public.css.scss";
+
+.message-container{
+  .image-container{
+    background-position: center;
+    background-repeat: no-repeat;
+    @include background-size(100% auto);
+  }
+
+  .image-main{
+    width: 100%;
+    min-height: 450px;
+    margin-left: $margin1;
+    background-image: url('/img/ss_main.png');
+  }
+
+  .messages{
+    padding-top: 20px;
+    .title{
+      margin-bottom: 30px;
+    }
+    .description{
+      font-size: 16px;
+      margin-bottom: 16px;
+      display:none;
+    }
+  }
+}
+
+.info-container{
+  padding: $margin1;
+  .title{
+    margin-bottom: 20px;
+  }
+  blockquote{
+    margin-left: $margin1;
+  }
+}

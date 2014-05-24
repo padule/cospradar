@@ -1,0 +1,47 @@
+<td class='center'><%= @feedback.categoryText() %></td>
+
+<% if @isAdmin: %>
+  <td class='center'>
+    <%= @user.username %>
+  </td>
+<% end %>
+
+<td><%= @safe padule.changeTxtList(@content) %></td>
+<td class='center'>
+  <% if @isOwn || @isAdmin: %>
+    <button class='btn btn-danger js-delete-btn' type='button'>削除</button>
+  <% end %>
+</td>
+<td class='created-date center'>
+  <%= @created %>
+</td>
+<td class='center'>
+  <% if @isAdmin: %>
+    <select class='js-response-kb form-control'>
+      <option value='1' <% if @feedback.get('response_kb') is '1': %>selected<% end %>>
+        未対応
+      </option>
+      <option value='2' <% if @feedback.get('response_kb') is '2': %>selected<% end %>>
+        対応します
+      </option>
+      <option value='3' <% if @feedback.get('response_kb') is '3': %>selected<% end %>>
+        対応しません
+      </option>
+    </select>
+  <% else: %>
+    <%= @feedback.responseText() %>
+  <% end %>
+</td>
+<td>
+  <% if @isAdmin: %>
+    <textarea class='js-comment form-control' row='3' placeholder='フィードバックにコメント'><%= @comment %></textarea>
+  <% else: %>
+    <%= @safe padule.changeTxtList(@comment) %>
+  <% end %>
+</td>
+
+<% if @isAdmin: %>
+  <td class='center'>
+    <button class='btn btn-success js-edit-btn disabled' type='button'>保存</button>
+  </td>
+<% end %>

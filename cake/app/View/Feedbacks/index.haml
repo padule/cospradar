@@ -1,0 +1,138 @@
+!!!
+%html
+  %head
+    %title Paduleフィードバック
+
+    %link{:href => "../../img/favicon.ico", :rel => "shortcut icon"}
+    %link{:href => "../../css/bootstrap.min.css", :rel => "stylesheet"}
+    %link{:href => "../../css/padule.css", :rel => "stylesheet"}
+    %link{:href => "../../css/feedback.css", :rel => "stylesheet"}
+
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no"}
+
+  %body#feedbackIndex
+    .navbar.navbar-inverse.navbar-fixed-top.padule-nav
+      .container-fluid
+        %a.navbar-brand{:href=>"/users/mypage"}
+          Paduleに戻る
+
+        %ul.nav.navbar-nav.pull-right#userInfo
+          %li.dropdown
+            %a{:href=>"#", :data=>{:toggle=>'dropdown'}, :class=> 'pull-right'}
+              %i.glyphicon.glyphicon-user
+              :plain
+                <span id='userName' data-userid='<?php echo $user["id"]; ?>' data-isadmin='<?php echo $isAdmin; ?>'>
+                  <?php echo $user['username'];?>
+                </span>
+              %b.caret
+
+            %ul.dropdown-menu
+              %li
+                %a#logout{:href=>"/users/logout"}
+                  %i.glyphicon.glyphicon-off
+                  ログアウト
+
+    .info-container.container-fluid
+      .row
+        .col-md-4.count-container
+          :plain
+            <span class='feedback-number'>
+              <?php echo count($feedbacks);?>
+            </span>
+          %span='件のフィードバック'
+        .col-md-8
+          %p='Paduleをご利用いただきありがとうございます！'
+          %p='Paduleは鋭意改善中ですので、フィードバックをいただけばすぐに対応します！'
+          %p='どんな小さなことでも大歓迎です！'
+
+    .feedback-container.container-fluid
+      .row-fluid
+        %table.table.table-hover.table-condensed.table-bordered#feedbackTable
+          %thead
+            %tr
+              %th
+              :plain
+                <?php if ($user["company_id"] == 9999): ?>
+                  <th>報告者</th>
+                <?php endif; ?>
+              %th='コメント'
+              %th
+              %th='登録日'
+              %th='対応状況'
+              %th='運営コメント'
+              :plain
+                <?php if ($user["company_id"] == 9999): ?>
+                  <th></th>
+                <?php endif; ?>
+            %tr.new-feedback
+              %td.center.feedback_kb
+                %select.form-control#feedbackKb
+                  %option{:value=>'1'}='アイデア'
+                  %option{:value=>'2'}='いいね！'
+                  %option{:value=>'3'}='質問'
+                  %option{:value=>'4'}='バグ'
+              :plain
+                <?php if ($user["company_id"] == 9999): ?>
+                  <td></td>
+                <?php endif; ?>
+              %td
+                %textarea#feedbackContent.form-control{:rows=>'3', :placeholder=>'要望や質問を記入し、送信ボタンを押してください'}
+              %td.center.btn-container
+                %button.btn.btn-primary#btnSendFeedback.disabled{:type=>'button'}
+                  送信
+              %td.center
+              %td.center
+              %td
+              :plain
+                <?php if ($user["company_id"] == 9999): ?>
+                  <td></td>
+                <?php endif; ?>
+          %tbody
+
+    #alertModal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{:type=>'button', :aria=>{:hidden=>'modal-body'}, :data=>{:dismiss => 'modal'}}
+              &times;
+            %i.glyphicon.glyphicon-question-sign
+            %span.modal-title
+          .modal-body
+          .modal-footer
+            %button#alertOK.btn.btn-success{:type => 'button'}
+              はい
+            %button.btn.btn-default{:type => 'button', :data => {:dismiss => 'modal'}}
+              いいえ
+
+    :javascript
+      if (window.padule == null) window.padule = { Models: {}, Collections: {}, Views: {},Routers: {} };
+    %script{:src=>"../../js/libs/jquery-2.0.3.min.js"}
+    %script{:src=>"../../js/libs/bootstrap.min.js"}
+    %script{:src=>"../../js/libs/json2.js"}
+    %script{:src=>"../../js/libs/dateformat.js"}
+    %script{:src=>"../../js/libs/underscore.js"}
+    %script{:src=>"../../js/libs/backbone.js"}
+    %script{:src=>"../../js/application.js"}
+    %script{:src=>"../../js/padule.js"}
+    / template
+    %script{:src=>"../../js/templates/templates.js"}
+    / model
+    %script{:src=>"../../js/models/feedback.js"}
+    / collection
+    %script{:src=>"../../js/collections/feedbacks.js"}
+    / view
+    %script{:src=>"../../js/views/schedule/alert_modal.js"}
+    %script{:src=>"../../js/views/feedback/feedback_list_element.js"}
+    %script{:src=>"../../js/views/feedback/feedback_index.js"}
+    / router
+    %script{:src=>"../../js/routers/schedules_router.js"}
+
+    %script
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45987329-1', 'padule.me');
+      ga('send', 'pageview');

@@ -1,0 +1,93 @@
+@import "public.css.scss";
+
+body{
+  @include background-image(linear-gradient(to top, #fff, #d6d5ff 10%, #83a9be));
+}
+
+.landing-container{
+  padding-top: 60px;
+  @include background-image(linear-gradient($white1 0%, $blue1 86%, $blue2 100%));
+
+  .lead{
+    text-align: center;
+    font-size: $font-size2;
+    line-height: 30px;
+    padding: $margin1;
+  }
+
+  .image-container{
+    background-position: center;
+    background-repeat: no-repeat;
+    @include background-size(100% auto);
+  }
+
+  .image-main{
+    width: 100%;
+    min-height: 470px;
+    margin-left: $margin1;
+    background-image: url('/img/ss_main.png');
+  }
+
+  .image-web{
+    width: 100%;
+    min-height: 470px;
+    margin-left: $margin1;
+    background-image: url('/img/ss_web.png');
+  }
+
+  .image-mobile{
+    width: 100%;
+    min-height: 470px;
+    @include background-size(auto 95%);
+    margin-left: $margin1;
+    background-image: url('/img/ss_mobile.png');
+  }
+
+  .i-catch-container{
+    padding: $margin1;
+    text-align: center;
+
+    .text{
+      margin-top: $margin1;
+    }
+    .i-catch{
+      margin-top: $margin2;
+      min-height: 60px;
+      background-position: center;
+      background-repeat: no-repeat;
+      @include background-size(auto auto);
+      &.calendar{
+        background-image: url('/img/icon_calendar.png');
+      }
+      &.stack{
+        background-image: url('/img/icon_stack.png');
+      }
+      &.money{
+        background-image: url('/img/icon_money.png');
+      }
+    }
+  }
+
+  .image-web-container, .image-mobile-container{
+    margin-top: $margin2;
+    @include line-top;
+
+    .description-container{
+      margin-top: 24px;
+    }
+
+    .description{
+      padding: $margin1;
+      text-align: center;
+      .title{
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  .image-mobile-container{
+    .description{
+      padding-top: 50px;
+    }
+  }
+}

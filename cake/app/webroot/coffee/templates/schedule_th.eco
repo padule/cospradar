@@ -1,0 +1,8 @@
+<div>
+  <button type="button" class="schedule-delete-button close pull-left">
+    &times;
+  </button>
+  <div class="pull-right schedule-time">
+    <%= @start_time %> 〜
+  </div>
+</div>

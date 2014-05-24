@@ -1,0 +1,46 @@
+@import 'padule';
+
+#usersLogin {
+  $users-login-login-container-width: 330px;
+
+  background-color: $gray1;
+
+  .form-signin {
+    max-width: $users-login-login-container-width;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    .form-signin-heading {
+      // margin-bottom: 10px;
+    }
+    input[type="text"] {
+      margin-bottom: 0px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .form-control {
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+  }
+
+  .footer-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $margin1;
+    text-align: right;
+    background-color: $gray4;
+  }
+}

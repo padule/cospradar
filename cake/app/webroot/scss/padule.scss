@@ -1,0 +1,114 @@
+@import "compass";
+
+$nav-height: 40px;
+$sidebar-width: 200px;
+
+// colors
+$gray1: #f5f5f5;
+$gray2: #ECF0F1;
+$gray3: #BDC3C7;
+$gray4: #DEDEDE;
+$navy1: #34495e;
+$navy2: #2C3E50;
+$white1: #FEFEFE;
+$orange1: #e67e22;
+$orange2: #fcf8e3;
+$red1: #b94a48;
+
+// margins
+$margin1: 10px;
+$margin2: 15px;
+
+// font
+$font-size1: 12px;
+$font-size2: 16px;
+$font-size3: 20px;
+
+@mixin line-top($op1: .2, $op2: .3) {
+  border-top: 1px solid rgba(0, 0, 0, $op1);
+  @include box-shadow(rgba(255,255,255, $op2) 0 1px 0 inset);
+}
+@mixin line-bottom($op1: .2, $op2: .3) {
+  border-bottom: 1px solid rgba(0, 0, 0, $op1);
+  @include box-shadow(rgba(255,255,255, $op2) 0 1px 0);
+}
+@mixin line-right($op1: .2, $op2: .3) {
+  border-right: 1px solid rgba(0, 0, 0, $op1);
+  @include box-shadow(rgba(255,255,255, $op2) -1px 0 0 inset);
+}
+@mixin ts-fff($op: .1) {
+  text-shadow: -1px 1px rgba(0, 0, 0, $op);
+}
+@mixin gradient-top-lighten($color: #666, $lighten: 10%) {
+  background-color: $color;
+  @include filter-gradient(lighten($color, $lighten), $color, vertical);
+  @include background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%));
+}
+@mixin box-emboss($border: .15, $shadow: .05, $highlight: 1) {
+  @include box-shadow(rgba(0, 0, 0, $shadow) 1px 1px 1px, rgba(255, 255, 255, $highlight) -1px 1px 0 inset);
+}
+
+body {
+  background-color: $gray3;
+  padding-top: $nav-height;
+  height: 100%;
+  color: $navy1;
+  font: 14px/1.231 "Lato", sans-serif;
+}
+html {
+  height: 100%;
+}
+
+.padule-nav {
+  $brand-font-size: 26px;
+  @include line-bottom(.2, .1);
+  @include gradient-top-lighten($navy1);
+  min-height: $nav-height;
+  height: $nav-height;
+  .navbar-brand {
+    color: $white1;
+    font-size: $brand-font-size;
+    padding-top: 10px;
+    @include transition-duration(0.25s);
+    &:hover{
+      color: $orange1;
+    }
+  }
+  .navbar-nav > li > a {
+    color: $white1;
+    padding: 10px 15px;
+  }
+  .info-area {
+    opacity: 0;
+    @include transition-duration(0.50s);
+    font-size: $font-size3;
+    margin-top: 6px;
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+.fill {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: $orange1 * 1.1;
+}

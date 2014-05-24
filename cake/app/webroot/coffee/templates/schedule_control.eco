@@ -1,0 +1,40 @@
+<div class="event-contents">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>
+        <%= @event.title %>
+        <button id="toggleBtn" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-chevron-down"></i></button>
+      </h3>
+
+      <blockquote class="event-text hide">
+        <div class="text-view">
+          <div id='eventText'><%= @event.text %></div>
+          <button id="eventTextEditBtn" class="btn btn-default">編集</button>
+        </div>
+        <div class="text-edit">
+          <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。"><%= @event.text %></textarea>
+          <button id="eventTextSaveBtn" class="event-text-btn btn btn-primary">保存</button>
+          <button id="eventTextCancelBtn" class="btn btn-default">キャンセル</button>
+        </div>
+      </blockquote>
+    </div>
+
+    <div class="schedule-add form-inline col-md-4">
+      <div class="bootstrap-datepicker pull-left">
+        <input type="text" id="scheduleDatepicker" class="span2 form-control" placeholder="年月日">
+      </div>
+      <div class="bootstrap-timepicker pull-left">
+        <input id="scheduleTimepicker" class="span2 form-control" type="text" placeholder="開始時間">
+      </div>
+      <button id="addScheduleButton" class="btn btn-primary disabled">
+        日程追加
+      </button>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon">共有URL</span>
+    <input class="form-control" type="text" value="<%= @url %>" onclick="this.select(0,this.value.length)">
+  </div>
+
+</div>

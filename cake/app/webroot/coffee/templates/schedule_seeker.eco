@@ -1,0 +1,3 @@
+<a href="#" class="seeker_info" data-toggle="popover" title="" data-content="<%= @mail %>" data-original-title="メールアドレス" data-placement="top">
+  <%= @name %>
+</a>

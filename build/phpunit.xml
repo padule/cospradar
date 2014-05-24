@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <filter>
+        <blacklist>
+            <directory suffix=".php">../cake/lib</directory>
+            <directory suffix=".php">../cake/plugins</directory>
+            <directory suffix=".php">../cake/vendors</directory>
+            <directory suffix=".php">../cake/app/Config</directory>
+            <directory suffix=".php">../cake/app/Plugin</directory>
+            <directory suffix=".ctp">../cake/app/Plugin</directory>
+            <directory suffix=".php">../cake/app/Test</directory>
+            <directory suffix=".php">../cake/app/Vendor</directory>
+            <directory suffix=".php">../cake/app/Lib</directory>
+        </blacklist>
+    </filter>
+</phpunit>

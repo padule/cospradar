@@ -1,0 +1,86 @@
+!!!
+%html
+  %head
+    %title Padule登録受付完了
+    %link{:href => '/img/favicon.ico', :rel => 'shortcut icon'}
+    %link{:href => '/css/bootstrap.min.css', :rel => 'stylesheet'}
+    %link{:href => '/css/complete.css', :rel => 'stylesheet'}
+
+    %meta{:charset => 'utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no'}
+
+    %script{:type => 'text/javascript', :src => '/js/libs/jquery-2.0.3.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/libs/jquery.lettering-0.6.1.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/libs/jquery.lettering.animate.min.js'}
+
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top.landing-nav{:role => 'navigation'}
+      .container
+        .navbar-header
+          %a.navbar-brand{:href=>"/"}
+            %img.logo{:src => '/img/logo.png'}
+
+    .container.message-container
+      .row
+        .col-md-6
+          .messages
+            %h2.title='登録を受け付けました！'
+            %p.description#description1
+              この度はPaduleにご登録いただきありがとうござます。
+            %p.description#description2
+              Paduleは現在β版開発中ですので、アカウントを随時発行させていただいております。
+            %p.description#description3
+              アカウント発行後、登録メールアドレス宛に承認のメッセージをお送りいたします。
+            %p.description#description4
+              採用に関わる方々の工数を激減させるべく尽力して参りますので、どうぞよろしくお願いいたします。
+            %p.description#description5
+              ご不明な点などございましたら、運営チームまでお気軽にご連絡ください。
+        .col-md-6
+          .image-container.image-main
+
+    .container.info-container
+      %h3.title='最新情報をチェック！'
+      .col-md-12
+        %p
+          %img{:src => '/img/icon-facebook.png'}
+          %a{:href => 'http://www.facebook.com/padule.me'}
+            Facebookページ『面接の日程調整ツール Padule』
+          %blockquote
+            %small
+              Paduleの最新情報が満載です！ユーザーの声や、今後の展開などについてもご紹介していきます。
+        %p
+          %img{:src => '/img/icon-feed.png'}
+          %a{:href => 'http://blog.padule.me'}
+            公式ブログ『残業するほどヒマじゃない。Padule』
+          %blockquote
+            %small
+              Paduleを使う多忙なビジネスマン向けの情報を発信しています。Paduleが誕生したStartupWeekendの情報も要チェックです。
+        %p
+          %i.glyphicon.glyphicon-user
+          %a{:href => 'padule@outlook.com'}
+            &nbsp;お問合せ先メールアドレス
+          %blockquote
+            %small
+              ご質問・ご要望、何でもお待ちしております！どんな小さなことでもフィードバックしていただけると嬉しいです。お気軽にご連絡ください。
+
+    .container.footer-container
+      .pull-right
+        © 2013 Padule Inc. - Started by
+        %a{:href => "http://tokyo.startupweekend.org/"}
+          Startup Weekend Tokyo
+
+    :javascript
+      var lettering = function(el, callback) {
+        $(el).show().lettering().animateLetters({opacity:0},{opacity:1},{randomOrder:false,time:150}, callback);
+      };
+      (function() {
+        lettering("#description1", function(){
+          lettering("#description2", function(){
+            lettering("#description3", function(){
+              lettering("#description4", function(){
+                lettering("#description5");
+              });
+            });
+          });
+        });
+      })();

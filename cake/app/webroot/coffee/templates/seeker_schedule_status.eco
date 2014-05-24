@@ -1,0 +1,8 @@
+<button class="seeker-schedule-btn btn btn-sm <%= @btn_class %>">
+  <i class="glyphicon <%= @icon_class %>"></i>
+</button>
+<div class="schedule-time">
+  <span>
+    <%= @start_time %> 〜
+  </span>
+</div>

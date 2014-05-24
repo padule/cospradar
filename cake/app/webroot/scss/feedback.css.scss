@@ -1,0 +1,58 @@
+@import "padule";
+
+#feedbackIndex{
+  $margin-base: 12px;
+  $color-table: $white1;
+  $color-thead: $gray2;
+  $color-new-feedback: $orange2;
+
+  .feedback-container{
+    padding: $margin-base;
+
+    table{
+      background-color: $color-table;
+      thead tr{
+        background-color: $color-thead;
+        th{
+          text-align: center;
+          vertical-align: middle;
+        }
+      }
+      thead .new-feedback td{
+        background-color: $color-new-feedback !important;
+      }
+      tbody{
+        .created-date{
+          width: 150px;
+        }
+        td{
+          vertical-align: middle;
+        }
+      }
+      td.center{
+        text-align: center;
+        vertical-align: middle;
+      }
+      .feedback_kb{
+        width: 100px;
+      }
+      .btn-container{
+        width: 90px;
+      }
+    }
+  }
+
+  .info-container{
+    margin: $margin-base;
+    padding: $margin-base;
+    background-color: $white1;
+    @include box-emboss;
+
+    .count-container{
+      padding-left: 20px;
+      .feedback-number{
+        font-size: 48px;
+      }
+    }
+  }
+}

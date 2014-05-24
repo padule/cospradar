@@ -1,0 +1,209 @@
+!!!
+%html
+  %head
+    %title Padule -日程調整をパズル感覚で-
+
+    %link{:href => 'img/favicon.ico', :rel => 'shortcut icon'}
+    %link{:href => 'css/bootstrap.min.css', :rel => 'stylesheet'}
+    %link{:href => 'css/public.css', :rel => 'stylesheet'}
+    %link{:href => 'css/landing.css', :rel => 'stylesheet'}
+
+    %meta{:name => 'keywords', :content => '調整,スケジュール,面接,日程,リクルート'}
+    %meta{:name => 'description', :content => '同じ候補日で複数の人を調整するのは大変ではありませんか。Padule（パジュール）を使うことで、簡単に早く調整することができます。'}
+    %meta{:property => 'og:title', :content => 'Padule'}
+    %meta{:property => 'og_image', :content => ''}
+    %meta{:property => 'og:description', :content => ''}
+    %meta{:property => 'og:type', :content => 'website'}
+    %meta{:property => 'og:url', :content => 'http://padule.me'}
+    %meta{:property => 'og:site_name', :content => 'Padule'}
+    %meta{:charset => 'utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no'}
+
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top.landing-nav{:role => 'navigation'}
+      .container
+        .navbar-header
+          %a.navbar-brand{:href=>"/"}
+            %img.logo{:src => '/img/logo.png'}
+        .social-container
+          %ul.pull-right
+            %li
+              / Facebook
+              :plain
+                <div class="fb-like" data-href="https://www.facebook.com/padule.me" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+            %li
+              / Twitter
+              :plain
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://padule.me" data-text="Padule -日程調整をパズル感覚で-" data-hashtags="padule">Tweet</a>
+            %li
+              / GooglePlus
+              :plain
+                <div class="g-plusone" data-size="medium"></div>
+            %li
+              / Hatena
+              :plain
+                <a href="http://b.hatena.ne.jp/entry/http://padule.me" class="hatena-bookmark-button" data-hatena-bookmark-title="Padule -日程調整をパズル感覚で-" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+
+    .container.landing-container
+      .row
+        .col-md-5
+          %p.lead
+            %span='同じ候補日で複数の人を調整するのは大変ではありませんか？'
+            %span='Padule（パジュール）を使うことで、簡単に早く調整することができます！'
+
+          %form.form-horizontal{:name => 'registerForm', :action => '/users/regist', :method => 'post', :role => 'form'}
+            .form-group#formCompanyName
+              %label.col-sm-3.control-label{:for => 'companyName'}
+                会社名
+              .col-sm-9
+                %input#companyName.form-control{:type => 'text', :name => 'TmpUser[company]', :placeholder => '会社名'}
+            .form-group#formUserName
+              %label.col-sm-3.control-label{:for => 'userName'}
+                お名前
+              .col-sm-9
+                %input#userName.form-control{:type => 'text', :name => 'TmpUser[username]', :placeholder => 'お名前'}
+            .form-group#formUserMail
+              %label.col-sm-3.control-label{:for => 'userMail'}
+                Eメール
+              .col-sm-9
+                %input#userMail.form-control{:type => 'email', :name => 'TmpUser[mail]', :placeholder => 'Eメール'}
+            .form-group#formTermsCheck
+              .col-sm-offset-3.col-sm-9
+                .checkbox
+                  %label
+                    %input#termsCheck.forms{:type => 'checkbox'}
+                    %a{:target => '_blank', :href => '/terms.html'}
+                      利用規約
+                    に同意する
+            .alert-container#alertArea.hide
+              .col-sm-offset-3.col-sm-9
+                .alert.alert-danger.alert-dismissable
+                  %i.glyphicon.glyphicon-exclamation-sign
+                  %span#alertText
+            .form-group
+              .col-sm-offset-3.col-sm-9
+                %input#registerBtn.btn.btn-lg.btn-block.btn-primary{:type => 'button', :value => '新規登録する', :onclick => 'submitAfterValidation()'}
+            .form-group
+              .col-sm-offset-3.col-sm-9
+                %a.btn.btn-lg.btn-block.btn-info{:href => '/users/login', :role => 'button'}
+                  ベータ版ログインへ
+
+        .col-md-7
+          .image-container.image-main
+
+      .row.i-catch-container
+        .col-md-4
+          .i-catch.calendar
+          %h3='シンプルで簡単に使える！'
+          %p.text
+            面接日時を設定して、URLを応募者に送るだけ。あとは応募者が自ら入力し、希望日時が一覧で表示されます。
+        .col-md-4
+          .i-catch.stack
+          %h3='スピーディーに調整できる！'
+          %p.text
+            URLを送ることで採用担当者様と応募者が直接調整できるので、人材会社が仲介して遅くなる心配もありません。
+        .col-md-4
+          .i-catch.money
+          %h3='基本利用料は無料！'
+          %p.text
+            本サービスは広告費にて運用致しますので、採用ご担当者様に費用は頂戴いたしません。社内承認不要でお気軽にお使いいただく事ができます。
+
+      .row.image-web-container
+        .col-md-6
+          .image-container.image-web
+        .col-md-6.description-container
+          .description
+            %h3.title='候補者全員を１ページで管理！'
+            %p='一人一人調整するのは煩雑ではありませんか？'
+            %p='Paduleなら候補者全員の候補日時を一括管理、'
+            %p='ご希望の選択して一斉に確定メールを送ることができます。'
+          .description
+            %h3.title='共通の入力画面でダブルブッキングの心配なし！'
+            %p='複数の候補者から同じ日時を希望されてお困りではありませんか？'
+            %p='Paduleなら候補日時はリアルタイムで更新されるので、'
+            %p='ダブルブッキングの心配はありません。'
+
+      .row.image-mobile-container
+        .col-md-6
+          .description
+            %h3.title='スマートフォン対応で簡単入力！'
+            %p='求職者からの返信が遅く感じませんか？'
+            %p='Paduleならスマートフォン対応でいつでもどこでも簡単に返信できるので、'
+            %p='今まで以上に早い返信が期待できます。'
+        .col-md-6
+          .image-container.image-mobile
+
+      .row.like-box-container
+        .container
+          :plain
+            <div class="fb-like-box" data-href="http://www.facebook.com/padule.me" data-width="600" data-height="300" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+    #fb-root
+
+    .container.footer-container
+      .pull-left
+        [推奨動作環境]　OS : Windows 7以上, Mac X以上 / ブラウザ : IE8以上, Chrome 最新版
+      .pull-right.mail-container
+        %a{:href => 'mailto:padule@outlook.com'}
+          お問い合わせ
+      .pull-right
+        %a{:target => '_blank', :href => '/privacy.html'}
+          プライバシーポリシー
+
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    :javascript
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+
+    %script{:type => 'text/javascript', :src => 'http://b.st-hatena.com/js/bookmark_button.js', :charset => 'utf-8', :async => 'async'}
+
+    %script{:type => 'text/javascript', :src => 'js/libs/jquery-2.0.3.min.js'}
+    %script{:type => 'text/javascript', :src => 'js/libs/bootstrap.min.js'}
+
+    :coffeescript
+      window.showAlert = (text)->
+        $alertArea = $ '#alertArea'
+        $alertArea.find('#alertText').html text
+        $alertArea.removeClass 'hide'
+      window.validateMail = (str)->
+        if str.match(/.+@.+\..+/) is null
+          false
+        else
+          true
+      window.clearError = ->
+        $('#formCompanyName').removeClass 'has-error'
+        $('#formUserName').removeClass 'has-error'
+        $('#formUserMail').removeClass 'has-error'
+        $('formTermsCheck').removeClass 'has-error'
+      window.submitAfterValidation = ->
+        clearError()
+        $companyName = $ '#companyName'
+        $userName = $ '#userName'
+        $userMail = $ '#userMail'
+        $termsCheck = $ '#termsCheck'
+        if $companyName.val() is '' || $userName.val() is '' || $userMail.val() is ''
+          showAlert '全ての項目を入力してください'
+          $('#formCompanyName').addClass 'has-error' if $companyName.val() is ''
+          $('#formUserName').addClass 'has-error' if $userName.val() is ''
+          $('#formUserMail').addClass 'has-error' if $userMail.val() is ''
+          return
+        unless validateMail $userMail.val()
+          showAlert 'メールアドレスが正しくありません'
+          $('#formUserMail').addClass 'has-error'
+          return
+        unless $termsCheck.prop 'checked'
+          showAlert '利用規約に同意してください'
+          $('#formTermsCheck').addClass 'has-error'
+          return
+        document.registerForm.submit()
