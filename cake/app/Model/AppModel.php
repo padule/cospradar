@@ -32,5 +32,42 @@ App::uses('Model', 'Model');
  */
 class AppModel extends Model {
 
+    public function find($type = 'first', $query = array()) {
+        $result = parent::find($type,$query);
+
+        $returnArray = array();
+        if (is_null($result)) {
+            return null;
+        }
+
+        $this->findQueryType = null;
+
+        if ($type === 'all') {
+            foreach ($result as $index => $value) {
+                $returnArray[$index] = $this->editResult($value);
+            }
+        }
+
+        if ($type === 'first') {
+            $returnArray = $this->editResult($result);
+        }
+
+
+        return $returnArray;
+    }
+
+    private function editResult($result) {
+        $returnArray = array();
+        foreach ($result as $key => $value) {
+            if ($key == $this->name) {
+                $returnArray = $value;
+            } else {
+                $returnArray[$key] = $value;
+            }
+        }
+
+        return $returnArray;
+    }
+
 
 }

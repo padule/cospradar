@@ -76,8 +76,7 @@ class ApiController extends AppController {
         $this->set(
                 array(
                     'response'   => $response,
-                    'status'     => STATUS_SUCCESS,
-                    '_serialize' => array('response', 'status')
+                    '_serialize' => 'response'
                 ));
     }
     public function view($id) {
@@ -87,28 +86,18 @@ class ApiController extends AppController {
         $this->set(
                 array(
                     'response'   => $response,
-                    '_serialize' => array('response')
+                    '_serialize' => 'response'
                 ));
     }
     public function add() {
         if ($this->{$this->modelClass}->save($this->request->data)) {
-            $response = array(
-                'id'      => $this->{$this->modelClass}->getLastInsertId(),
-                'message' => 'success'
-            );
-            $status = STATUS_SUCCESS;
-        } else {
-            $response = array(
-                'message' => $this->{$this->modelClass}->validationErrors
-            );
-            $status = STATUS_FAILED;
+            $response = $this->{$this->modelClass}->read();
         }
 
         $this->set(
                 array(
                     'response'   => $response,
-                    'status'     => $status,
-                    '_serialize' => array('response', 'status')
+                    '_serialize' => 'response'
                 ));
     }
     public function edit($id) {
@@ -125,8 +114,7 @@ class ApiController extends AppController {
         $this->set(
                 array(
                     'response'   => $response,
-                    'status'     => $status,
-                    '_serialize' => array('response', 'status')
+                    '_serialize' => array('response')
                 ));
     }
     public function delete($id) {
@@ -143,13 +131,12 @@ class ApiController extends AppController {
         $this->set(
                 array(
                     'response'   => $response,
-                    'status'     => $status,
-                    '_serialize' => array('response', 'status')
+                    '_serialize' => array('response')
                 ));
     }
 
-    public function setResponse($response, $status) {
-        $this->set(compact('response', 'status'));
-        $this->set('_serialize', array('response', 'status'));
+    public function setResponse($response) {
+        $this->set(compact('response'));
+        $this->set('_serialize');
     }
 }
