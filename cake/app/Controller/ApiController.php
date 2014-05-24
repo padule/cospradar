@@ -102,20 +102,7 @@ class ApiController extends AppController {
     }
     public function edit($id) {
         $this->{$this->modelClass}->id = $id;
-        if ($this->{$this->modelClass}->save($this->request->data)) {
-            $response = array('message' => 'success');
-            $status = STATUS_SUCCESS;
-        } else {
-            $response = array(
-                'message' => $this->{$this->modelClass}->validationErrors
-            );
-            $status = STATUS_FAILED;
-        }
-        $this->set(
-                array(
-                    'response'   => $response,
-                    '_serialize' => array('response')
-                ));
+        $this->add();
     }
     public function delete($id) {
         if ($this->{$this->modelClass}->delete($id)) {
