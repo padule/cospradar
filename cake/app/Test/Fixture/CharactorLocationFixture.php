@@ -1,16 +1,16 @@
 <?php
 /**
- * UserFixture
+ * CharactorLocationFixture
  *
  */
-class UserFixture extends CakeTestFixture {
+class CharactorLocationFixture extends CakeTestFixture {
 
 /**
  * Table name
  *
  * @var string
  */
-	public $table = 'Users';
+	public $table = 'CharactorLocations';
 
 /**
  * Fields
@@ -19,8 +19,9 @@ class UserFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-		'name' => array('type' => 'string', 'null' => true, 'length' => 128, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'image' => array('type' => 'binary', 'null' => true, 'default' => null),
+		'latitude' => array('type' => 'float', 'null' => false, 'default' => null, 'length' => '9,6'),
+		'longitude' => array('type' => 'float', 'null' => false, 'default' => null, 'length' => 9),
+		'charactor_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(
@@ -37,10 +38,11 @@ class UserFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'name' => 'Lorem ipsum dolor sit amet',
-			'image' => 'Lorem ipsum dolor sit amet',
-			'created' => '2014-05-24 08:03:09',
-			'modified' => '2014-05-24 08:03:09'
+			'latitude' => 1,
+			'longitude' => 1,
+			'charactor_id' => 1,
+			'created' => '2014-05-24 08:04:37',
+			'modified' => '2014-05-24 08:04:37'
 		),
 	);
 

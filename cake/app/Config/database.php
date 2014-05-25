@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => DB_USER,
 		'password' => DB_PASSWORD,
-		'database' => 'padule',
+		'database' => 'cospradar',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
@@ -76,7 +76,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => DB_USER,
 		'password' => DB_PASSWORD,
-		'database' => 'padule_jinji',
+		'database' => 'cospradar_test',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
