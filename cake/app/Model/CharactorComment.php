@@ -58,7 +58,7 @@ class CharactorComment extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'CommentCharactor' => array(
+		'Comment_Charactor' => array(
 			'className' => 'Charactor',
 			'foreignKey' => 'comment_charactor_id',
 			'conditions' => '',
