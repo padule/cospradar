@@ -9,9 +9,9 @@ class CharactorCommentsController extends ApiController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->queryParams = array(
+        $this->queryParams = array_merge($this->queryParams,array(
             'order' => 'CharactorComment.id desc'
-        );
+        ));
     }
 
     public function index() {

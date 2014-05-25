@@ -93,8 +93,23 @@ class ApiController extends AppController {
                 ));
     }
     public function add() {
-        if ($this->{$this->modelClass}->save($this->request->data)) {
-            $response = $this->{$this->modelClass}->read();
+        //画像の保存あり
+        if(isset($this->request->data['image']['tmp_name'])){
+
+            $image = $this->request->data['image'];
+            unset($this->request->data['image']);
+            if ($this->{$this->modelClass}->save($this->request->data)) {
+                $response = $this->{$this->modelClass}->read();
+            }
+            //画像保存先のパス
+            $path = WWW_ROOT . DS . 'userdata' . DS . $this->modelClass . DS . $this->{$this->modelClass}->id;
+            move_uploaded_file($image['tmp_name'], $path);
+            $this->request->data['image'] = $path;
+            $this->{$this->modelClass}->save($this->request->data);
+        } else {
+            if ($this->{$this->modelClass}->save($this->request->data)) {
+                $response = $this->{$this->modelClass}->read();
+            }
         }
 
         $this->set(
