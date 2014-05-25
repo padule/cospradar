@@ -62,7 +62,7 @@ class AppModel extends Model {
             if ($key == $this->name) {
                 $returnArray = $value;
             } else {
-                $returnArray[$key] = $value;
+                $returnArray[strtolower($key)] = $value;
             }
         }
 

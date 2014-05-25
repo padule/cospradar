@@ -90,6 +90,7 @@ class ApiController extends AppController {
                 ));
     }
     public function add() {
+        pr($this->request->data);
         if ($this->{$this->modelClass}->save($this->request->data)) {
             $response = $this->{$this->modelClass}->read();
         }
