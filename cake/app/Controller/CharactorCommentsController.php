@@ -7,10 +7,12 @@ App::uses('ApiController', 'Controller');
  */
 class CharactorCommentsController extends ApiController {
 
-    public $queryParams = array(
-        'limit' => 20,
-        'order' => 'CharactorComment.id desc'
-    );
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->queryParams = array(
+            'order' => 'CharactorComment.id desc'
+        );
+    }
 
     public function index() {
         $this->queryParams =array_merge($this->queryParams,$this->_queryAction());

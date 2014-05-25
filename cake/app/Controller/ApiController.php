@@ -9,7 +9,9 @@ App::uses('AppController', 'Controller');
  */
 class ApiController extends AppController {
 
-    public $queryParams = array();
+    public $queryParams = array(
+        'limit' => 20,
+    );
 
     public $components = array(
         'RequestHandler',
@@ -29,7 +31,6 @@ class ApiController extends AppController {
     );
 
     public function beforeFilter() {
-
         parent::beforeFilter();
     }
 
