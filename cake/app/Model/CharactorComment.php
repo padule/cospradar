@@ -39,15 +39,7 @@ class CharactorComment extends AppModel {
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'y' => array(
-				'rule' => array('y'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			)
 		),
 	);
 
@@ -67,7 +59,7 @@ class CharactorComment extends AppModel {
 			'order' => ''
 		),
 		'CommentCharactor' => array(
-			'className' => 'CommentCharactor',
+			'className' => 'Charactor',
 			'foreignKey' => 'comment_charactor_id',
 			'conditions' => '',
 			'fields' => '',

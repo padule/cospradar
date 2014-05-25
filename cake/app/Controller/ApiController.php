@@ -9,6 +9,8 @@ App::uses('AppController', 'Controller');
  */
 class ApiController extends AppController {
 
+    public $queryParams = array();
+
     public $components = array(
         'RequestHandler',
     );
@@ -23,7 +25,7 @@ class ApiController extends AppController {
         ),
         'fields'       => array('fields'),
         'order'        => array('desc', 'asc'),
-        'limit_offset' => array('limit', 'offset')
+        'limit_offset_page' => array('limit', 'offset','page')
     );
 
     public function beforeFilter() {
@@ -38,7 +40,7 @@ class ApiController extends AppController {
      *        	[description]
      * @return [type] [description]
      */
-    private function _queryAction($params = array()) {
+    public function _queryAction($params = array()) {
         foreach ($this->params->query as $key => $value) {
 
             if (in_array($key, $this->queryType['fields'])) {
@@ -55,7 +57,7 @@ class ApiController extends AppController {
                 $orderStr = str_replace('-', ',', $value);
                 $orderStr .= ' ' . $key;
                 $params['order'] = $orderStr;
-            } else if (in_array($key, $this->queryType['limit_offset'])) {
+            } else if (in_array($key, $this->queryType['limit_offset_page'])) {
                 // limit_offset
                 $params[$key] = $value;
             } else {
@@ -71,8 +73,8 @@ class ApiController extends AppController {
         $this->{$this->modelClass}->bindModel(array($type => array($model)));
     }
     public function index() {
-        $params = $this->_queryAction();
-        $response = $this->{$this->modelClass}->find('all', $params);
+        $this->queryParams =array_merge($this->queryParams,$this->_queryAction());
+        $response = $this->{$this->modelClass}->find('all', $this->queryParams);
         $this->set(
                 array(
                     'response'   => $response,
@@ -81,8 +83,8 @@ class ApiController extends AppController {
     }
     public function view($id) {
         $this->request->query[$this->modelClass . '.id'] = $id;
-        $params = $this->_queryAction();
-        $response = $this->{$this->modelClass}->find('first', $params);
+        $this->queryParams =array_merge($this->queryParams,$this->_queryAction());
+        $response = $this->{$this->modelClass}->find('first', $this->queryParams);
         $this->set(
                 array(
                     'response'   => $response,
@@ -90,7 +92,6 @@ class ApiController extends AppController {
                 ));
     }
     public function add() {
-        pr($this->request->data);
         if ($this->{$this->modelClass}->save($this->request->data)) {
             $response = $this->{$this->modelClass}->read();
         }
@@ -108,18 +109,16 @@ class ApiController extends AppController {
     public function delete($id) {
         if ($this->{$this->modelClass}->delete($id)) {
             $response = array('message' => 'success');
-            $status = STATUS_SUCCESS;
         } else {
             $response = array(
                 'success' => false,
                 'message' => $this->{$this->modelClass}->validationErrors
             );
-            $status = STATUS_FAILED;
         }
         $this->set(
                 array(
                     'response'   => $response,
-                    '_serialize' => array('response')
+                    '_serialize' => 'response'
                 ));
     }
 

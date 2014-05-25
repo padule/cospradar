@@ -32,11 +32,10 @@
  * REST
  */
 Router::mapResources('users');
-Router::mapResources('events');
-Router::mapResources('schedules');
-Router::mapResources('seekers');
-Router::mapResources('seeker_schedules');
-Router::mapResources('feedbacks');
+Router::mapResources('charactor_comments');
+Router::mapResources('charactor_locations');
+Router::mapResources('charactors');
+Router::mapResources('devices');
 
 Router::parseExtensions();
 
