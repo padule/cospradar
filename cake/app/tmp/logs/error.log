@@ -5517,3 +5517,143 @@ Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 161
 #1 /Users/k.moromizato/Documents/workspace/PADULE/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Users/k.moromizato/Documents/workspace/PADULE/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-05-24 08:09:47 Error: [MissingActionException] Action UsersController::index() could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-05-24 08:17:21 Error: [MissingViewException] View file "/Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/View/Users/json/index.ctp" is missing.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(956): JsonView->render(NULL, NULL)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-05-24 08:17:52 Error: [MissingViewException] View file "/Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/View/Users/json/index.ctp" is missing.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(956): JsonView->render(NULL, NULL)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(193): Controller->render()
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-05-24 08:34:14 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_findAll' at line 1
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(459): PDOStatement->execute(Array)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(425): DboSource->_execute('_findAll', Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('_findAll', Array, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(611): DboSource->fetchAll('_findAll', Array, Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(788): DboSource->query('_findAll', Array, Object(User))
+#5 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): Model->__call('_findAll', Array)
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): User->_findAll('after', Array, NULL)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#8 [internal function]: ApiController->index()
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#11 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#12 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-24 08:34:43 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_findAll' at line 1
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(459): PDOStatement->execute(Array)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(425): DboSource->_execute('_findAll', Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('_findAll', Array, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(611): DboSource->fetchAll('_findAll', Array, Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(788): DboSource->query('_findAll', Array, Object(User))
+#5 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): Model->__call('_findAll', Array)
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): User->_findAll('after', Array, NULL)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#8 [internal function]: ApiController->index()
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#11 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#12 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-24 08:34:50 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_findAll' at line 1
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(459): PDOStatement->execute(Array)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(425): DboSource->_execute('_findAll', Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('_findAll', Array, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(611): DboSource->fetchAll('_findAll', Array, Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(788): DboSource->query('_findAll', Array, Object(User))
+#5 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): Model->__call('_findAll', Array)
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(52): User->_findAll('after', Array, NULL)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#8 [internal function]: ApiController->index()
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#11 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#12 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-24 08:39:42 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_findAll' at line 1
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(459): PDOStatement->execute(Array)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(425): DboSource->_execute('_findAll', Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('_findAll', Array, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(611): DboSource->fetchAll('_findAll', Array, Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(788): DboSource->query('_findAll', Array, Object(User))
+#5 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(58): Model->__call('_findAll', Array)
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(58): User->_findAll('after', Array, NULL)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#8 [internal function]: ApiController->index()
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#11 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#12 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-24 08:40:00 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '_findAll' at line 1
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(459): PDOStatement->execute(Array)
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(425): DboSource->_execute('_findAll', Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(669): DboSource->execute('_findAll', Array, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(611): DboSource->fetchAll('_findAll', Array, Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(788): DboSource->query('_findAll', Array, Object(User))
+#5 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(58): Model->__call('_findAll', Array)
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(58): User->_findAll('after', Array, Array)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#8 [internal function]: ApiController->index()
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#11 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#12 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-24 08:52:35 Error: Fatal Error (1): Call to undefined function editResult() in [/Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php, line 47]
+2014-05-24 08:52:35 Error: [FatalErrorException] Call to undefined function editResult()
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Users/k.moromi...', 47)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Users/k.moromi...', 47, Array)
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Users/k.moromi...', 47, Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-24 08:57:02 Error: [MissingControllerException] Controller class 1Controller could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 08:58:43 Error: [MissingControllerException] Controller class 1Controller could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 08:58:47 Error: [MissingControllerException] Controller class 1Controller could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 10:57:20 Error: [MissingControllerException] Controller class CharacterController could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 10:57:27 Error: [MissingControllerException] Controller class CharactersController could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 10:57:36 Error: [MissingControllerException] Controller class CharactorController could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 10:57:45 Error: [MissingActionException] Action CharactorsController::index() could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(CharactorsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-05-24 11:05:57 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-05-24 11:07:19 Error: [MissingTableException] Table deveices for model Deveice was not found in datasource default.
+#0 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(3186): Model->setSource('deveices')
+#1 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Datasource/DboSource.php(1066): Model->getDataSource()
+#2 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Model/Model.php(2637): DboSource->read(Object(User), Array)
+#3 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Model/AppModel.php(36): Model->find('all', Array)
+#4 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/Controller/ApiController.php(75): AppModel->find('all', Array)
+#5 [internal function]: ApiController->index()
+#6 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /Users/k.moromizato/Documents/workspace/cospradar_api/cake/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
