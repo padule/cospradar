@@ -1,3 +1,0 @@
-<a class="btn btn-sm <%= @btn_class_name %> <%= @disabled %> schedule-btn" href="#">
-  <%= @text %>
-</a>
