@@ -41,7 +41,8 @@ class ApiController extends AppController {
      *        	[description]
      * @return [type] [description]
      */
-    public function _queryAction($params = array()) {
+    public function _queryAction($search = false) {
+        $params = array();
         foreach ($this->params->query as $key => $value) {
 
             if (in_array($key, $this->queryType['fields'])) {
@@ -62,8 +63,12 @@ class ApiController extends AppController {
                 // limit_offset
                 $params[$key] = $value;
             } else {
-                // conditions
-                $params['conditions'][] = array($key => $value);
+                if($search) {
+                    $params['conditions'][] = array($key . ' like' => '%' . $value . '%');
+                } else {
+                    $params['conditions'][] = array($key => $value);
+                }
+                
             }
         }
         //$this->log("params");
