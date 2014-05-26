@@ -28,7 +28,7 @@ class CharactorLocationsController extends ApiController {
                 ");
         $this->request->data['latlng'] = $latlng[0][0]['latlng'];
 
-        if ($this->{$this->modelClass}->save($this->request->data)) {
+        if ($this->{$this->modelClass}->deleteAll(array('charactor_id' => $this->request->data['charactor_id']), false) && $this->{$this->modelClass}->save($this->request->data)) {
             $response = $this->{$this->modelClass}->read();
         }
 
