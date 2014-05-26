@@ -11,6 +11,7 @@ class CharactorLocationsController extends ApiController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        unset($this->queryParams['limit']);
     }
 
     public function add() {
