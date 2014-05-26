@@ -142,6 +142,16 @@ class ApiController extends AppController {
                 ));
     }
 
+    public function search() {
+        $this->queryParams =array_merge($this->queryParams,$this->_queryAction(true));
+        $response = $this->{$this->modelClass}->find('all', $this->queryParams);
+        $this->set(
+                array(
+                    'response'   => $response,
+                    '_serialize' => 'response'
+                ));
+    }
+
     public function setResponse($response) {
         $this->set(compact('response'));
         $this->set('_serialize');
