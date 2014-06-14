@@ -57,6 +57,12 @@ class CharactorLocationsController extends ApiController {
             'conditions'=>array("MBRContains(GeomFromText('LineString({$longitudePlus} {$latitudePlus}, {$longitudeMinus} {$latitudeMinus})'),latlng)"
         )));
 
+        if(isset($this->params->query['charactor_title'])) {
+            $this->queryParams['conditions'][] = array(
+                'Charactor.title' . ' like' => '%' . $this->params->query['charactor_title'] . '%'
+            );
+        }
+
         $response = $this->{$this->modelClass}->find('all', $this->queryParams);
         $this->set(
                 array(
