@@ -58,4 +58,10 @@ class Charactor extends AppModel {
 		)
 	);
 
+    public $hasOne = array(
+        'Charactor_Location' => array(
+            'className' => 'CharactorLocation',
+        )
+    );
+
 }
