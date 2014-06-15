@@ -15,7 +15,8 @@ class CharactorLocation extends AppModel {
 	public $useTable = 'CharactorLocations';
 
 	public $virtualFields = array(
-
+		'longitude' => 'X(latlng)',
+		'latitude' => 'Y(latlng)'
 	);
 
 /**
