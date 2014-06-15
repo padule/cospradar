@@ -53,9 +53,19 @@ class CharactorLocationsController extends ApiController {
         $latitudeMinus = $latitude - ($this->extent / 30.8184 * 0.000277778);
         $longitudeMinus = $longitude - ($this->extent / 25.2450 * 0.000277778);
 
+        $this->{$this->modelClass}->virtualFields = array(
+            'latitude' => 'X(latlng)',
+            'longitude' => 'Y(latlng)',
+            'len'=>'GLength(GeomFromText(CONCAT("LineString('.$longitude.' '.$latitude.',", X(latlng), " ", Y(latlng),")")))'
+        );
         $this->queryParams = array_merge($this->queryParams,array(
-            'conditions'=>array("MBRContains(GeomFromText('LineString({$longitudePlus} {$latitudePlus}, {$longitudeMinus} {$latitudeMinus})'),latlng)"
-        )));
+
+            'conditions'=>array(
+                "MBRContains(GeomFromText('LineString({$longitudePlus} {$latitudePlus}, {$longitudeMinus} {$latitudeMinus})'),latlng)",
+                'Charactor.is_enabled' => true,
+            ),
+            'order' => 'len asc'   
+        ));
 
         if(isset($this->params->query['charactor_title'])) {
             $this->queryParams['conditions'][] = array(
