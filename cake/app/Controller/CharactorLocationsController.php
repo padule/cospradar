@@ -54,8 +54,8 @@ class CharactorLocationsController extends ApiController {
         $longitudeMinus = $longitude - ($this->extent / 25.2450 * 0.000277778);
 
         $this->{$this->modelClass}->virtualFields = array(
-            'latitude' => 'X(latlng)',
-            'longitude' => 'Y(latlng)',
+            'longitude' => 'X(latlng)',
+            'latitude' => 'Y(latlng)',
             'len'=>'GLength(GeomFromText(CONCAT("LineString('.$longitude.' '.$latitude.',", X(latlng), " ", Y(latlng),")")))'
         );
         $this->queryParams = array_merge($this->queryParams,array(
