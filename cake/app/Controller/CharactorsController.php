@@ -7,9 +7,34 @@ App::uses('ApiController', 'Controller');
  */
 class CharactorsController extends ApiController {
 
+    public $uses = array('Charactor','CharactorLocation');
+
     public function index() {
+
+        if(isset($this->params->query['latitude']) && isset($this->params->query['longitude'])) {
+            $latitude = $this->params->query['latitude'];
+            $longitude = $this->params->query['longitude'];
+            $this->{$this->modelClass}->virtualFields = array(
+                'len'=>'GLength(GeomFromText(CONCAT("LineString('.$longitude.' '.$latitude.',", X(Charactor_Location.latlng), " ", Y(Charactor_Location.latlng),")")))'
+            );
+
+            $latitudePlus = $latitude + ($this->extent / 30.8184 * 0.000277778);
+            $longitudePlus = $longitude + ($this->extent / 25.2450 * 0.000277778);
+            $latitudeMinus = $latitude - ($this->extent / 30.8184 * 0.000277778);
+            $longitudeMinus = $longitude - ($this->extent / 25.2450 * 0.000277778);
+
+            $this->queryParams = array_merge($this->queryParams,array(
+                'conditions'=>array(
+                    'Charactor.is_enabled' => true,
+                ),
+                'order' => 'len asc'   
+            ));
+            unset($this->params->query['latitude']);
+            unset($this->params->query['longitude']);
+        }
         $this->queryParams =array_merge($this->queryParams,$this->_queryAction(true));
         $response = $this->{$this->modelClass}->find('all', $this->queryParams);
+
         $this->set(
                 array(
                     'response'   => $response,
@@ -17,7 +42,7 @@ class CharactorsController extends ApiController {
                 ));
     }
 
-        public function add() {
+    public function add() {
 
         if(!isset($this->request->data['is_enabled'])){
            $this->request->data['is_enabled'] = true;
