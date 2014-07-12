@@ -27,12 +27,19 @@ class CharactorsController extends ApiController {
                 'conditions'=>array(
                     'Charactor.is_enabled' => true,
                 ),
-                'order' => 'len asc'   
+                'order' => 'len asc'
             ));
             unset($this->params->query['latitude']);
             unset($this->params->query['longitude']);
         }
-        $this->queryParams =array_merge($this->queryParams,$this->_queryAction(true));
+        $this->queryParams =array_merge($this->queryParams,$this->_queryAction());
+        if(isset($this->params->query['title'])) {
+            foreach ($this->queryParams['conditions'] as $key => $value) {
+                if(isset($value['title'])) {
+                    $this->queryParams['conditions'][$key] = array('title like' => '%' . $this->params->query['title'] . '%');
+                }
+            }
+        }
         $response = $this->{$this->modelClass}->find('all', $this->queryParams);
 
         $this->set(
@@ -44,16 +51,6 @@ class CharactorsController extends ApiController {
 
     public function add() {
 
-        if(!isset($this->request->data['is_enabled'])){
-           $this->request->data['is_enabled'] = true;
-        }
-        if($this->request->data['is_enabled']) {
-            $updateConditions = array(
-                'user_id' => $this->request->data['user_id'],
-            );
-        }
-
-        $this->{$this->modelClass}->updateAll(array('is_enabled' => false),$updateConditions);
         //画像の保存あり
         if(isset($_FILES['image']['tmp_name'])){
 
@@ -79,5 +76,18 @@ class CharactorsController extends ApiController {
                 ));
     }
 
+    public function edit($id) {
+
+        if(isset($this->request->data['is_enabled'])&& $this->request->data['is_enabled']) {
+            $charactor = $this->{$this->modelClass}->findById($id);
+            $updateConditions = array(
+                'user_id' => $charactor['user_id'],
+            );
+            $this->{$this->modelClass}->updateAll(array('is_enabled' => false),$updateConditions);
+        }
+
+        $this->{$this->modelClass}->id = $id;
+        $this->add();
+    }
 
 }
