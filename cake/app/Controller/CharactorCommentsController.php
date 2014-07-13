@@ -82,7 +82,6 @@ class CharactorCommentsController extends ApiController {
 
         if($this->request->data['charactor_id'] != $this->request->data['comment_charactor_id']) {
             $charactor = $this->Charactor->find('first',array('conditions' => array('Charactor.id' => $this->request->data['charactor_id'])));
-
             $device = $this->Device->find('first',array('conditions' => array('user_id' => $charactor['user_id'])));
             if(!empty($device)) {
                 App::uses( 'HttpSocket', 'Network/Http');
@@ -95,8 +94,7 @@ class CharactorCommentsController extends ApiController {
                 $post_data = array(
                     'registration_id' => $device['token'], // deviceトークン
                     'collapse_key' => 'comment',
-                    'data.title' => 'お知らせ',
-                    'data.text' => 'あなたのけいじばんにコメントが届きました。'
+                    'data.message' => 'あなたのけいじばんにコメントが届きました。'
                 );
                 $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
             }
@@ -123,8 +121,7 @@ class CharactorCommentsController extends ApiController {
                     $post_data = array(
                         'registration_id' => $device['token'], // deviceトークン
                         'collapse_key' => 'comment',
-                        'data.title' => 'お知らせ',
-                        'data.text' => 'あなたのけいじばんにコメントが届きました。'
+                        'data.message' => 'あなたがコメントしたけいじばんにコメントが届きました。'
                     );
                     $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
                 }
