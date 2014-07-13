@@ -93,15 +93,14 @@ class CharactorCommentsController extends ApiController {
                  );
                 $post_data = array(
                     'registration_id' => $device['token'], // deviceトークン
-                    'collapse_key' => 'comment',
-                    'data.title' => 'お知らせ',
-                    'data.text' => 'あなたのけいじばんに新しいコメントが届きました。',
-                    'data.id' => '1',
-                    'data.model_id' => '1',
+                    'data.title' => '',
+                    'data.text' => '',
+                    'data.id' => '101',
+                    'data.model_id' => $this->request->data['charactor_id'],
                     'data.extra_url' => '',
-                    'data.icon_url' => '',
+                    'data.icon_url' => $charactor['image'],
                     'data.big_picture_url' => '',
-                    'data.priority' => '',
+                    'data.priority' => '50',
                 );
                 $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
             }
@@ -112,6 +111,7 @@ class CharactorCommentsController extends ApiController {
             ),
             'group' => 'comment_charactor_id'
         );
+        $commentCharactor = $this->Charactor->findById($this->request->data['comment_charactor_id']);
         $charactors = $this->CharactorComment->find('all',$params);
         foreach ($charactors as $value) {
             if($value['comment_charactor']['id'] != $this->request->data['charactor_id'] && $value['comment_charactor']['id'] != $this->request->data['comment_charactor_id']) {
@@ -126,15 +126,14 @@ class CharactorCommentsController extends ApiController {
                      );
                 $post_data = array(
                     'registration_id' => $device['token'], // deviceトークン
-                    'collapse_key' => 'comment',
-                    'data.title' => 'お知らせ',
-                    'data.text' => 'あなたがコメントしたけいじばんに新しいコメントが届きました。',
-                    'data.id' => '1',
-                    'data.model_id' => '1',
+                    'data.title' => '',
+                    'data.text' => '',
+                    'data.id' => '102',
+                    'data.model_id' => $this->request->data['charactor_id'],
                     'data.extra_url' => '',
-                    'data.icon_url' => '',
+                    'data.icon_url' => $commentCharactor['image'],
                     'data.big_picture_url' => '',
-                    'data.priority' => '',
+                    'data.priority' => '50',
                 );
                     $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
                 }
