@@ -7,7 +7,7 @@ App::uses('ApiController', 'Controller');
  */
 class CharactorCommentsController extends ApiController {
 
-    public $uses = array('CharactorComment', 'Charactor');
+    public $uses = array('CharactorComment', 'Charactor','User','Device');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -53,6 +53,81 @@ class CharactorCommentsController extends ApiController {
         $response = $this->Charactor->find('all',array('conditions'=> array('Charactor.id'=>$charactors),'group' => 'Charactor.id',));
         foreach ($response as $key => $value) {
             $response[$key]['latest_comment'] = $value['latest_comment']['0'];
+        }
+        $this->set(
+                array(
+                    'response'   => $response,
+                    '_serialize' => 'response'
+                ));
+    }
+
+    public function add() {
+        //画像の保存あり
+        if(isset($_FILES['image']['tmp_name'])){
+
+            $image = $_FILES['image'];
+            $this->{$this->modelClass}->save($this->request->data);
+            //画像保存先のパス
+            $path = WWW_ROOT . 'userdata' . DS . $this->modelClass . DS . $this->{$this->modelClass}->id;
+            move_uploaded_file($image['tmp_name'], $path);
+            $this->request->data['image'] = 'http://' . env('HTTP_HOST') . '/userdata/' . $this->modelClass . '/' . $this->{$this->modelClass}->id;
+            if ($this->{$this->modelClass}->save($this->request->data)) {
+                $response = $this->{$this->modelClass}->read();
+            }
+        } else {
+            if ($this->{$this->modelClass}->save($this->request->data)) {
+                $response = $this->{$this->modelClass}->read();
+            }
+        }
+
+        if($this->request->data['charactor_id'] != $this->request->data['comment_charactor_id']) {
+            $charactor = $this->Charactor->find('first',array('conditions' => array('Charactor.id' => $this->request->data['charactor_id'])));
+
+            $device = $this->Device->find('first',array('conditions' => array('user_id' => $charactor['user_id'])));
+            if(!empty($device)) {
+                App::uses( 'HttpSocket', 'Network/Http');
+                $socket = new HttpSocket();
+                $request = array(
+                    'header' => array(
+                        'Authorization' => 'key=AIzaSyCwhblt6PZGG8bC9bYwGi7ehu91d13AVWU' // ApiKey
+                     )
+                 );
+                $post_data = array(
+                    'registration_id' => $device['token'], // deviceトークン
+                    'collapse_key' => 'comment',
+                    'data.message' => 'あなたのけいじばんにコメントが届きました。'
+                );
+                $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
+            }
+            $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
+        }
+        $params = array(
+            'conditions' => array(
+                'charactor_id' => $this->request->data['charactor_id'],
+            ),
+            'group' => 'comment_charactor_id'
+        );
+        $charactors = $this->CharactorComment->find('all',$params);
+        foreach ($charactors as $value) {
+            if($value['comment_charactor']['id'] != $this->request->data['charactor_id'] && $value['comment_charactor']['id'] != $this->request->data['comment_charactor_id']) {
+                $device = $this->Device->find('first',array('conditions' => array('user_id' => $value['comment_charactor']['user_id'])));
+                if(!empty($device)) {
+                    App::uses( 'HttpSocket', 'Network/Http');
+                    $socket = new HttpSocket();
+                    $request = array(
+                        'header' => array(
+                            'Authorization' => 'key=AIzaSyCwhblt6PZGG8bC9bYwGi7ehu91d13AVWU' // ApiKey
+                         )
+                     );
+                    $post_data = array(
+                        'registration_id' => $device['token'], // deviceトークン
+                        'collapse_key' => 'comment',
+                        'data.message' => 'あなたがコメントしたけいじばんにコメントが届きました。'
+                    );
+                    $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
+                }
+
+            }
         }
         $this->set(
                 array(
