@@ -27,15 +27,33 @@ class CharactorCommentsController extends ApiController {
     }
 
     public function comment_list() {
-        $this->queryParams =array_merge($this->_queryAction(),array(
-            'conditions' => array(
-                'comment_charactor_id' => $this->params->query['comment_charactor_id'],
-                'NOT' => array(
-                    "charactor_id" => $this->params->query['comment_charactor_id']
+        if(isset($this->params->query['user_id'])) {
+            $charactors = $this->Charactor->find('all',array('conditions' => array('user_id' => $this->params->query['user_id'])));
+            $charactorIds = array();
+            foreach ($charactors as $charactor) {
+                $charactorIds[] = $charactor['id'];
+            }
+            $this->queryParams =array_merge($this->_queryAction(),array(
+                'conditions' => array(
+                    'comment_charactor_id' => $charactorIds,
+                    'NOT' => array(
+                        "charactor_id" => $charactorIds
+                    ),
                 ),
-            ),
-            'group' => 'charactor_id',
-        ));
+                'group' => 'charactor_id',
+            ));
+        } else {
+            $this->queryParams =array_merge($this->_queryAction(),array(
+                'conditions' => array(
+                    'comment_charactor_id' => $this->params->query['comment_charactor_id'],
+                    'NOT' => array(
+                        "charactor_id" => $this->params->query['comment_charactor_id']
+                    ),
+                ),
+                'group' => 'charactor_id',
+            ));
+        }
+
         $list = $this->{$this->modelClass}->find('all', $this->queryParams);
         $charactors = array();
         foreach ($list as $value) {
