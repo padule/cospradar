@@ -92,7 +92,7 @@ class CharactorCommentsController extends ApiController {
                      )
                  );
                 $post_data = array(
-                    'registration_id' => 'APA91bFCeuWZ2Cq2EuDJA-8srJuLW6wIMxwjTg8Tl4SU0aB7aesid9NLP48H0kWrt2FzZjxkSW2G9sCxXvtldU1GWcFftNSd4myOkXoeG3S4wTPnhPtB_ejwtz8PQ6bHJt9mcuDv6F3Fe3Kp2t267y0Kr6PP-8SFlQ', // deviceトークン
+                    'registration_id' => $device['token'], // deviceトークン
                     'collapse_key' => 'comment',
                     'data.title' => 'お知らせ',
                     'data.text' => 'あなたのけいじばんに新しいコメントが届きました。',
@@ -125,7 +125,7 @@ class CharactorCommentsController extends ApiController {
                          )
                      );
                 $post_data = array(
-                    'registration_id' => 'APA91bFCeuWZ2Cq2EuDJA-8srJuLW6wIMxwjTg8Tl4SU0aB7aesid9NLP48H0kWrt2FzZjxkSW2G9sCxXvtldU1GWcFftNSd4myOkXoeG3S4wTPnhPtB_ejwtz8PQ6bHJt9mcuDv6F3Fe3Kp2t267y0Kr6PP-8SFlQ', // deviceトークン
+                    'registration_id' => $device['token'], // deviceトークン
                     'collapse_key' => 'comment',
                     'data.title' => 'お知らせ',
                     'data.text' => 'あなたがコメントしたけいじばんに新しいコメントが届きました。',
