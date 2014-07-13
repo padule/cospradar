@@ -95,7 +95,8 @@ class CharactorCommentsController extends ApiController {
                 $post_data = array(
                     'registration_id' => $device['token'], // deviceトークン
                     'collapse_key' => 'comment',
-                    'data.message' => 'あなたのけいじばんにコメントが届きました。'
+                    'data.title' => 'お知らせ',
+                    'data.text' => 'あなたのけいじばんにコメントが届きました。'
                 );
                 $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
             }
@@ -122,7 +123,8 @@ class CharactorCommentsController extends ApiController {
                     $post_data = array(
                         'registration_id' => $device['token'], // deviceトークン
                         'collapse_key' => 'comment',
-                        'data.message' => 'あなたがコメントしたけいじばんにコメントが届きました。'
+                        'data.title' => 'お知らせ',
+                        'data.text' => 'あなたのけいじばんにコメントが届きました。'
                     );
                     $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
                 }
