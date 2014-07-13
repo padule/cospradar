@@ -82,7 +82,7 @@ class CharactorCommentsController extends ApiController {
 
         if($this->request->data['charactor_id'] != $this->request->data['comment_charactor_id']) {
             $charactor = $this->Charactor->find('first',array('conditions' => array('Charactor.id' => $this->request->data['charactor_id'])));
-            $device = $this->Device->find('first',array('conditions' => array('user_id' => $charactor['user_id'])));
+            $device = $this->Device->find('first',array('conditions' => array('user_id' => $charactor['user_id'])));    
             if(!empty($device)) {
                 App::uses( 'HttpSocket', 'Network/Http');
                 $socket = new HttpSocket();
@@ -92,13 +92,19 @@ class CharactorCommentsController extends ApiController {
                      )
                  );
                 $post_data = array(
-                    'registration_id' => $device['token'], // deviceトークン
+                    'registration_id' => 'APA91bFCeuWZ2Cq2EuDJA-8srJuLW6wIMxwjTg8Tl4SU0aB7aesid9NLP48H0kWrt2FzZjxkSW2G9sCxXvtldU1GWcFftNSd4myOkXoeG3S4wTPnhPtB_ejwtz8PQ6bHJt9mcuDv6F3Fe3Kp2t267y0Kr6PP-8SFlQ', // deviceトークン
                     'collapse_key' => 'comment',
-                    'data.message' => 'あなたのけいじばんにコメントが届きました。'
+                    'data.title' => 'お知らせ',
+                    'data.text' => 'あなたのけいじばんに新しいコメントが届きました。',
+                    'data.id' => '1',
+                    'data.model_id' => '1',
+                    'data.extra_url' => '',
+                    'data.icon_url' => '',
+                    'data.big_picture_url' => '',
+                    'data.priority' => '',
                 );
                 $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
             }
-            $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
         }
         $params = array(
             'conditions' => array(
@@ -118,11 +124,18 @@ class CharactorCommentsController extends ApiController {
                             'Authorization' => 'key=AIzaSyCwhblt6PZGG8bC9bYwGi7ehu91d13AVWU' // ApiKey
                          )
                      );
-                    $post_data = array(
-                        'registration_id' => $device['token'], // deviceトークン
-                        'collapse_key' => 'comment',
-                        'data.message' => 'あなたがコメントしたけいじばんにコメントが届きました。'
-                    );
+                $post_data = array(
+                    'registration_id' => 'APA91bFCeuWZ2Cq2EuDJA-8srJuLW6wIMxwjTg8Tl4SU0aB7aesid9NLP48H0kWrt2FzZjxkSW2G9sCxXvtldU1GWcFftNSd4myOkXoeG3S4wTPnhPtB_ejwtz8PQ6bHJt9mcuDv6F3Fe3Kp2t267y0Kr6PP-8SFlQ', // deviceトークン
+                    'collapse_key' => 'comment',
+                    'data.title' => 'お知らせ',
+                    'data.text' => 'あなたがコメントしたけいじばんに新しいコメントが届きました。',
+                    'data.id' => '1',
+                    'data.model_id' => '1',
+                    'data.extra_url' => '',
+                    'data.icon_url' => '',
+                    'data.big_picture_url' => '',
+                    'data.priority' => '',
+                );
                     $socket->post('https://android.googleapis.com/gcm/send', $post_data, $request);
                 }
 
