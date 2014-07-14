@@ -25,7 +25,7 @@ class CharactorsController extends ApiController {
 
             $this->queryParams = array_merge($this->queryParams,array(
                 'conditions'=>array(
-                    'Charactor.is_enabled' => true,
+                //    'Charactor.is_enabled' => true,
                 ),
                 'order' => 'len asc'
             ));
