@@ -36,9 +36,6 @@ class CharactorCommentsController extends ApiController {
             $this->queryParams =array_merge($this->_queryAction(),array(
                 'conditions' => array(
                     'comment_charactor_id' => $charactorIds,
-                    'NOT' => array(
-                        "charactor_id" => $charactorIds
-                    ),
                 ),
                 'group' => 'charactor_id',
             ));
@@ -46,9 +43,6 @@ class CharactorCommentsController extends ApiController {
             $this->queryParams =array_merge($this->_queryAction(),array(
                 'conditions' => array(
                     'comment_charactor_id' => $this->params->query['comment_charactor_id'],
-                    'NOT' => array(
-                        "charactor_id" => $this->params->query['comment_charactor_id']
-                    ),
                 ),
                 'group' => 'charactor_id',
             ));
