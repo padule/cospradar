@@ -14,9 +14,16 @@ class CharactorsController extends ApiController {
         if(isset($this->params->query['latitude']) && isset($this->params->query['longitude'])) {
             $latitude = $this->params->query['latitude'];
             $longitude = $this->params->query['longitude'];
-            $this->{$this->modelClass}->virtualFields = array(
-                'len'=>'GLength(GeomFromText(CONCAT("LineString('.$longitude.' '.$latitude.',", X(Charactor_Location.latlng), " ", Y(Charactor_Location.latlng),")")))'
-            );
+
+            if (Charactor_Location.latlng == null) {
+                $this->{$this->modelClass}->virtualFields = array(
+                    'len'=>PHP_INT_MAX
+                    );
+            } else {
+                $this->{$this->modelClass}->virtualFields = array(
+                    'len'=>'GLength(GeomFromText(CONCAT("LineString('.$longitude.' '.$latitude.',", X(Charactor_Location.latlng), " ", Y(Charactor_Location.latlng),")")))'
+                    );
+            }
 
             $latitudePlus = $latitude + ($this->extent / 30.8184 * 0.000277778);
             $longitudePlus = $longitude + ($this->extent / 25.2450 * 0.000277778);
