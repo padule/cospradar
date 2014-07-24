@@ -27,7 +27,7 @@ class CharactorsController extends ApiController {
                 'conditions'=>array(
                 //    'Charactor.is_enabled' => true,
                 ),
-                'order' => 'len asc'
+                'order' => array('len' => 'is null', 'len asc')
             ));
             unset($this->params->query['latitude']);
             unset($this->params->query['longitude']);
